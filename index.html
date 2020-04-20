@@ -27,7 +27,8 @@
 
 
         // // FIRST IMPLEMENTATION LOGIC****************************************************
-        // // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
+        // // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT 
+        // //         PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
         // function playRound(playerSelection, computerSelection) {
         //     playerSelection = playerSelection.toLowerCase();
         //     computerSelection = computerSelection.toLowerCase();
@@ -45,7 +46,8 @@
         // ************************************************************************************
 
 
-        // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
+        // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT 
+        //        PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
         function playRound(playerSelection, computerSelection) {
             playerSelection = playerSelection.toLowerCase();
             computerSelection = computerSelection.toLowerCase();
@@ -54,7 +56,9 @@
                 return ("Player is cheating!");
             } else if (playerSelection === computerSelection) {
                 return (`Draw! ${playerSelection} ties ${computerSelection}`);
-            } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+            } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || 
+                       (playerSelection === 'paper' && computerSelection === 'rock') || 
+                       (playerSelection === 'scissors' && computerSelection === 'paper')) {
                 return (`You win! ${playerSelection} beats ${computerSelection}`);
             } else {
                 return (`You lose! ${computerSelection} beats ${playerSelection}`);
