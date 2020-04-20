@@ -69,20 +69,37 @@
                 const computerSelection = computerPlay();
                 const results = playRound(playerSelection, computerSelection);
                 console.log(results);
+                printToBody(results);
                 if (results.includes('win')) {
                     playerScore++;
                 } else if (results.includes('lose')) {
                     computerScore++;
                 }
             }
+            printGameResults(playerScore, computerScore);
+        }
+
+        function printToBody(results) {
+            const body = document.querySelector('body');
+            const text = document.createElement('p');
+
+            body.appendChild(text);
+            text.textContent = results;
+        }
+
+        function printGameResults(playerScore, computerScore) {
             if (playerScore > computerScore) {
-                console.log("Player wins!");
+                console.log("Player wins the game!");
+                printToBody("Player wins the game!");
             } else if (computerScore > playerScore) {
-                console.log("Computer wins!");
+                console.log("Computer wins the game!");
+                printToBody("Computer wins the game!");
             } else {
-                console.log("Draw!");
+                console.log("The game is a draw!");
+                printToBody("The game is a draw!");
             }
         }
+
     </script>
 </body>
 </html>
