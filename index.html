@@ -7,7 +7,8 @@
 </head>
 <body>
     <script>
-        // GENERATES COMPUTERS PLAY RAMDOMLY
+
+        // GENERATES COMPUTER'S CHOICE RAMDOMLY
         function computerPlay(){
             const random = Math.floor(Math.random() * Math.floor(3));
             switch (random){
@@ -47,7 +48,7 @@
 
 
         // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT 
-        //        PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
+        //        PLAYER INPUTS. I'M SURE THERE IS A CLEANER WAY TO IMPLEMENT THIS THAN IF-ELSE LOGIC.
         function playRound(playerSelection, computerSelection) {
             playerSelection = playerSelection.toLowerCase();
             computerSelection = computerSelection.toLowerCase();
@@ -65,6 +66,7 @@
             }
         }
 
+        // CORE GAME FUNCTION
         function game() {
             let playerScore = 0;
             let computerScore = 0;
