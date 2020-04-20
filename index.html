@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // GENERATES COMPUTERS PLAY RAMDOMLY
+        function computerPlay(){
+            const random = Math.floor(Math.random() * Math.floor(3));
+            switch (random){
+                case 0:
+                    return 'rock';
+                    break;
+                case 1:
+                    return 'paper';
+                    break;
+                case 2:
+                    return 'scissors';
+                    break;
+                default:
+                    console.log("COMPUTERPLAY ERROR");
+            }
+        }
+
+
+        // // FIRST IMPLEMENTATION LOGIC****************************************************
+        // // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
+        // function playRound(playerSelection, computerSelection) {
+        //     playerSelection = playerSelection.toLowerCase();
+        //     computerSelection = computerSelection.toLowerCase();
+
+        //     if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        //         return ("Player is cheating!");
+        //     } else if (playerSelection === computerSelection) {
+        //         return (`Draw! ${playerSelection} ties ${computerSelection}`);
+        //     } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+        //         return (`You win! ${playerSelection} beats ${computerSelection}`);
+        //     } else {
+        //         return (`You lose! ${computerSelection} beats ${playerSelection}`);
+        //     }
+        // }
+        // ************************************************************************************
+
+
+        // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+
+            if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+                return ("Player is cheating!");
+            } else if (playerSelection === computerSelection) {
+                return (`Draw! ${playerSelection} ties ${computerSelection}`);
+            } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+                return (`You win! ${playerSelection} beats ${computerSelection}`);
+            } else {
+                return (`You lose! ${computerSelection} beats ${playerSelection}`);
+            }
+        }
+
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            for (let i = 0; i < 5; i++) {
+                const playerSelection = prompt("Make your selection (rock, paper, or scissors)");
+                const computerSelection = computerPlay();
+                const results = playRound(playerSelection, computerSelection);
+                console.log(results);
+                if (results.includes('win')) {
+                    playerScore++;
+                } else if (results.includes('lose')) {
+                    computerScore++;
+                }
+            }
+            if (playerScore > computerScore) {
+                console.log("Player wins!");
+            } else if (computerScore > playerScore) {
+                console.log("Computer wins!");
+            } else {
+                console.log("Draw!");
+            }
+        }
+    </script>
+</body>
+</html>
