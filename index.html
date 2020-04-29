@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div id="buttons">
+        <button id="rock" class="choice">Rock</button>
+        <button id="paper" class="choice">Paper</button>
+        <button id="scissors" class="choice">Scissors</button>        
+    </div>
+    <div id="result">Starting new game</div>
+    <div id="gameResult"></div>
+    <div id="scores">
+        Player: <span id="player">0</span> Computer: <span id="computer">0</span>
+    </div>
+    <button id="reset">Reset</button>
+
     <script>
 
         // GENERATES COMPUTER'S CHOICE RAMDOMLY
@@ -26,85 +39,73 @@
             }
         }
 
+        // LOGIC FOR SINGLE ROUND OF PLAY. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. CALLS FUNCTION TO UPDATE GAME. I'M SURE THERE IS A CLEANER WAY TO IMPLEMENT THIS THAN IF-ELSE LOGIC. 
+        function playRound(e) {
+            const gameResult = document.querySelector('#gameResult')
+            if (gameResult.textContent !== "") return; // STOPS FURTHER PLAY IF GAME COMPLETE
+            const playerSelection = this.id;
+            const computerSelection = computerPlay();
+            let result = document.querySelector('#result');
 
-        // // FIRST IMPLEMENTATION LOGIC****************************************************
-        // // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT 
-        // //         PLAYER INPUTS. LIKELY A CLEANER WAY TO IMPLEMENT THAN IF-ELSE LOGIC.
-        // function playRound(playerSelection, computerSelection) {
-        //     playerSelection = playerSelection.toLowerCase();
-        //     computerSelection = computerSelection.toLowerCase();
-
-        //     if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-        //         return ("Player is cheating!");
-        //     } else if (playerSelection === computerSelection) {
-        //         return (`Draw! ${playerSelection} ties ${computerSelection}`);
-        //     } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        //         return (`You win! ${playerSelection} beats ${computerSelection}`);
-        //     } else {
-        //         return (`You lose! ${computerSelection} beats ${playerSelection}`);
-        //     }
-        // }
-        // ************************************************************************************
-
-
-        // LOGIC FOR SINGLE ROUND OF PLAY. CORRECTS FOR CASE DIFFERENCES. BASIC EXCLUSION OF INCORRECT 
-        //        PLAYER INPUTS. I'M SURE THERE IS A CLEANER WAY TO IMPLEMENT THIS THAN IF-ELSE LOGIC.
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toLowerCase();
-            computerSelection = computerSelection.toLowerCase();
 
             if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-                return ("Player is cheating!");
+                result.textContent = "Player is cheating!";
             } else if (playerSelection === computerSelection) {
-                return (`Draw! ${playerSelection} ties ${computerSelection}`);
+                result.textContent = `Draw! ${playerSelection} ties ${computerSelection}`;
             } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || 
                        (playerSelection === 'paper' && computerSelection === 'rock') || 
                        (playerSelection === 'scissors' && computerSelection === 'paper')) {
-                return (`You win! ${playerSelection} beats ${computerSelection}`);
+                result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                
             } else {
-                return (`You lose! ${computerSelection} beats ${playerSelection}`);
+                result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
             }
+            updateGame();
         }
 
-        // CORE GAME FUNCTION
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i < 5; i++) {
-                const playerSelection = prompt("Make your selection (rock, paper, or scissors)");
-                const computerSelection = computerPlay();
-                const results = playRound(playerSelection, computerSelection);
-                console.log(results);
-                printToBody(results);
-                if (results.includes('win')) {
-                    playerScore++;
-                } else if (results.includes('lose')) {
-                    computerScore++;
-                }
+        // UPDATES PAGE WITH MATCH INFORMATION AND SCORE. PRINTS WIN STATEMENT.
+        function updateGame() {
+            const result = document.querySelector('#result');
+            const gameResult = document.querySelector('#gameResult');
+            const player = document.querySelector('#player');
+            const computer = document.querySelector('#computer');
+            let playerScore = Number(player.textContent);
+            let computerScore = Number(computer.textContent);
+            
+            if (result.textContent.includes('win')) {
+                playerScore++;
+            } else if (result.textContent.includes('lose')) {
+                computerScore++;
             }
-            printGameResults(playerScore, computerScore);
-        }
-
-        function printToBody(results) {
-            const body = document.querySelector('body');
-            const text = document.createElement('p');
-
-            body.appendChild(text);
-            text.textContent = results;
-        }
-
-        function printGameResults(playerScore, computerScore) {
-            if (playerScore > computerScore) {
-                console.log("Player wins the game!");
-                printToBody("Player wins the game!");
-            } else if (computerScore > playerScore) {
-                console.log("Computer wins the game!");
-                printToBody("Computer wins the game!");
-            } else {
-                console.log("The game is a draw!");
-                printToBody("The game is a draw!");
+        
+            if (playerScore === 5 || computerScore === 5) {
+                gameResult.textContent = `${playerScore === 5 ? "Player" : "Computer"} wins game!`
             }
+
+            player.textContent = playerScore;
+            computer.textContent = computerScore;
         }
+
+        // RESETS GAME STATE TO BEGINNING
+        function resetGame() {
+            const result = document.querySelector('#result');
+            const gameResult = document.querySelector('#gameResult');
+            const player = document.querySelector('#player');
+            const computer = document.querySelector('#computer');
+
+            result.textContent = "Starting new game";
+            player.textContent = "0";
+            computer.textContent = "0";
+            gameResult.textContent = "";
+        }
+
+        const choices = document.querySelectorAll('.choice');
+        choices.forEach(choice => {
+            choice.addEventListener('click', playRound);
+        })
+
+        const reset = document.querySelector('#reset');
+        reset.addEventListener('click', resetGame);
 
     </script>
 </body>
