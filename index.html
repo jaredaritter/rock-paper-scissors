@@ -4,23 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        #buttons {
+            width: 400px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .choice {
+            width: 100px;
+            height: 100px;
+            background-color: cyan;
+            border: 2px solid black;
+            text-align: center;
+        }
+        #scores {
+            font-size: 18px;
+        }
+        p {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <div id="buttons">
-        <button id="rock" class="choice">Rock</button>
-        <button id="paper" class="choice">Paper</button>
-        <button id="scissors" class="choice">Scissors</button>        
+    <div id="container">
+        <h1>Welcome to Rock, Paper, Scissors!</h1>
+        <h2>To play please click your choice</h2>
+        <div id="buttons">
+            <div id="rock" class="choice">Rock</div>
+            <div id="paper" class="choice">Paper</div>
+            <div id="scissors" class="choice">Scissors</div>        
+        </div>
+        <p id="result">New game ready</p>
+        <p id="gameResult"></p>
+        <p id="scores">
+            Player: <span id="player">0</span> Computer: <span id="computer">0</span>
+        </p>
+        <button id="reset">Reset</button>
     </div>
-    <div id="result">Starting new game</div>
-    <div id="gameResult"></div>
-    <div id="scores">
-        Player: <span id="player">0</span> Computer: <span id="computer">0</span>
-    </div>
-    <button id="reset">Reset</button>
-
+    
     <script>
-
         // GENERATES COMPUTER'S CHOICE RAMDOMLY
         function computerPlay(){
             const random = Math.floor(Math.random() * Math.floor(3));
@@ -93,7 +129,7 @@
             const player = document.querySelector('#player');
             const computer = document.querySelector('#computer');
 
-            result.textContent = "Starting new game";
+            result.textContent = "New game ready";
             player.textContent = "0";
             computer.textContent = "0";
             gameResult.textContent = "";
@@ -106,7 +142,6 @@
 
         const reset = document.querySelector('#reset');
         reset.addEventListener('click', resetGame);
-
     </script>
 </body>
 </html>
