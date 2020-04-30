@@ -28,6 +28,16 @@ h2 {
     height: 100px;
 }
 
+.borderTop {
+    border-top: 4px solid green;
+    transition: 0.3s;
+}
+
+.borderBottom {
+    border-bottom: 4px solid red;
+    transition: 0.3s;
+}
+
 #rock .img {
     height: 110px;
 }

@@ -39,8 +39,8 @@ function playRound() {
         result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 
-    this.style.borderTop = '4px solid green';
-    document.querySelector('#' + computerSelection).style.borderBottom = '4px solid red';
+    this.classList.add('borderTop');
+    document.querySelector('#' + computerSelection).classList.add('borderBottom');
 
     updateGame();
 }
@@ -75,6 +75,7 @@ function resetGame() {
     const player = document.querySelector('#player');
     const computer = document.querySelector('#computer');
 
+    resetBorders();
     result.textContent = "New game ready";
     player.textContent = "0";
     computer.textContent = "0";
@@ -83,7 +84,10 @@ function resetGame() {
 
 function resetBorders() {
     const choices = document.querySelectorAll('.choice');
-    choices.forEach(choice => choice.style.border = 'none');
+    choices.forEach(choice => {
+        choice.classList.remove('borderTop');
+        choice.classList.remove('borderBottom');
+    });
 }
 
 const choices = document.querySelectorAll('.choice');
