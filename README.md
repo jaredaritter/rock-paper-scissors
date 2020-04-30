@@ -9,8 +9,7 @@
 
 ## Thoughts
 * Functional on page using event listeners. 
-* Will spend time styling for improved experience
 * Core logic functional
-    * Logically I want to have some core functionality controlling game state instead of using the page itself to maintain state. I don't have a strong reason it just seems the most intuitive way, but passing logic back and forth is tricky and would involve global variables which seem less used in JS.
-    * Linear propagation of events using page to maintain state was easy to implement and appears to be the most common method for page logic. 
+    * Linear propagation using page to maintain state was easy to implement and appears to be the most common method for page logic. 
+        * Still need to improve understanding of when to pass arguments vs let functions recalculate them for DOM changes
     * Will benefit from further learning on best practices for logic implementation in JS
