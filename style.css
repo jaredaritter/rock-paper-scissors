@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    font-size: 20px;
+}
+#container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+#buttons {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.choice {
+    width: 100px;
+    height: 100px;
+    /* background-color: cyan; */
+    /* border: 2px solid black; */
+    text-align: center;
+}
+.img {
+    width: auto;
+    height: 100px;
+}
+
+#rock .img {
+    height: 110px;
+}
+
+#scores {
+    font-size: 18px;
+}
+p {
+    font-size: 20px;
+}

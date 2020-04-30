@@ -4,48 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-        h2 {
-            font-size: 20px;
-        }
-        #container {
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-        #buttons {
-            width: 400px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-        }
-        .choice {
-            width: 100px;
-            height: 100px;
-            /* background-color: cyan; */
-            /* border: 2px solid black; */
-            text-align: center;
-        }
-        .img {
-            width: auto;
-            height: 100px;
-        }
-
-        #rock .img {
-            height: 110px;
-        }
-        
-        #scores {
-            font-size: 18px;
-        }
-        p {
-            font-size: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -53,9 +12,9 @@
         <h1>Welcome to Rock, Paper, Scissors!</h1>
         <h2>To play please click your choice</h2>
         <div id="buttons">
-            <div id="rock" class="choice"><img class="img"src="http://clipart-library.com/images_k/rock-clipart-transparent/rock-clipart-transparent-23.png" height="110px" alt="rock"></div>
-            <div id="paper" class="choice"><img class="img"src="http://clipart-library.com/data_images/296148.png" alt="paper"></div>
-            <div id="scissors" class="choice"><img class="img"src="http://clipart-library.com/images_k/scissors-clipart-transparent/scissors-clipart-transparent-3.png" alt="scissors"></div>        
+            <div id="rock" class="choice"><img class="img"src="http://clipart-library.com/images_k/rock-clipart-transparent/rock-clipart-transparent-23.png" height="110px" alt="rock image and clickable choice for game"></div>
+            <div id="paper" class="choice"><img class="img"src="http://clipart-library.com/data_images/296148.png" alt="paper image and clickable choice for game"></div>
+            <div id="scissors" class="choice"><img class="img"src="http://clipart-library.com/images_k/scissors-clipart-transparent/scissors-clipart-transparent-3.png" alt="scissors image and clickable choice for game"></div>        
         </div>
         <p id="result">New game ready</p>
         <p id="gameResult"></p>
@@ -66,92 +25,6 @@
         
     </div>
     
-    <script>
-        // GENERATES COMPUTER'S CHOICE RAMDOMLY
-        function computerPlay(){
-            const random = Math.floor(Math.random() * Math.floor(3));
-            switch (random){
-                case 0:
-                    return 'rock';
-                    break;
-                case 1:
-                    return 'paper';
-                    break;
-                case 2:
-                    return 'scissors';
-                    break;
-                default:
-                    console.log("COMPUTERPLAY ERROR");
-            }
-        }
-
-        // LOGIC FOR SINGLE ROUND OF PLAY. BASIC EXCLUSION OF INCORRECT PLAYER INPUTS. CALLS FUNCTION TO UPDATE GAME. I'M SURE THERE IS A CLEANER WAY TO IMPLEMENT THIS THAN IF-ELSE LOGIC. 
-        function playRound(e) {
-            const gameResult = document.querySelector('#gameResult')
-            if (gameResult.textContent !== "") return; // STOPS FURTHER PLAY IF GAME COMPLETE
-            const playerSelection = this.id;
-            const computerSelection = computerPlay();
-            let result = document.querySelector('#result');
-
-
-            if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-                result.textContent = "Player is cheating!";
-            } else if (playerSelection === computerSelection) {
-                result.textContent = `Draw! ${playerSelection} ties ${computerSelection}`;
-            } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || 
-                       (playerSelection === 'paper' && computerSelection === 'rock') || 
-                       (playerSelection === 'scissors' && computerSelection === 'paper')) {
-                result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-                
-            } else {
-                result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-            }
-            updateGame();
-        }
-
-        // UPDATES PAGE WITH MATCH INFORMATION AND SCORE. PRINTS WIN STATEMENT.
-        function updateGame() {
-            const result = document.querySelector('#result');
-            const gameResult = document.querySelector('#gameResult');
-            const player = document.querySelector('#player');
-            const computer = document.querySelector('#computer');
-            let playerScore = Number(player.textContent);
-            let computerScore = Number(computer.textContent);
-            
-            if (result.textContent.includes('win')) {
-                playerScore++;
-            } else if (result.textContent.includes('lose')) {
-                computerScore++;
-            }
-        
-            if (playerScore === 5 || computerScore === 5) {
-                gameResult.textContent = `${playerScore === 5 ? "Player" : "Computer"} wins game!`
-            }
-
-            player.textContent = playerScore;
-            computer.textContent = computerScore;
-        }
-
-        // RESETS GAME STATE TO BEGINNING
-        function resetGame() {
-            const result = document.querySelector('#result');
-            const gameResult = document.querySelector('#gameResult');
-            const player = document.querySelector('#player');
-            const computer = document.querySelector('#computer');
-
-            result.textContent = "New game ready";
-            player.textContent = "0";
-            computer.textContent = "0";
-            gameResult.textContent = "";
-        }
-
-        const choices = document.querySelectorAll('.choice');
-        choices.forEach(choice => {
-            choice.addEventListener('click', playRound);
-        })
-
-        const reset = document.querySelector('#reset');
-        reset.addEventListener('click', resetGame);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
