@@ -26,10 +26,19 @@
         .choice {
             width: 100px;
             height: 100px;
-            background-color: cyan;
-            border: 2px solid black;
+            /* background-color: cyan; */
+            /* border: 2px solid black; */
             text-align: center;
         }
+        .img {
+            width: auto;
+            height: 100px;
+        }
+
+        #rock .img {
+            height: 110px;
+        }
+        
         #scores {
             font-size: 18px;
         }
@@ -44,16 +53,17 @@
         <h1>Welcome to Rock, Paper, Scissors!</h1>
         <h2>To play please click your choice</h2>
         <div id="buttons">
-            <div id="rock" class="choice">Rock</div>
-            <div id="paper" class="choice">Paper</div>
-            <div id="scissors" class="choice">Scissors</div>        
+            <div id="rock" class="choice"><img class="img"src="http://clipart-library.com/images_k/rock-clipart-transparent/rock-clipart-transparent-23.png" height="110px" alt="rock"></div>
+            <div id="paper" class="choice"><img class="img"src="http://clipart-library.com/data_images/296148.png" alt="paper"></div>
+            <div id="scissors" class="choice"><img class="img"src="http://clipart-library.com/images_k/scissors-clipart-transparent/scissors-clipart-transparent-3.png" alt="scissors"></div>        
         </div>
         <p id="result">New game ready</p>
         <p id="gameResult"></p>
         <p id="scores">
             Player: <span id="player">0</span> Computer: <span id="computer">0</span>
         </p>
-        <button id="reset">Reset</button>
+        <button id="reset">Reset</button>  
+        
     </div>
     
     <script>
