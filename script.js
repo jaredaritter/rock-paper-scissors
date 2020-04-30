@@ -47,6 +47,7 @@ function playRound() {
 
 // UPDATES PAGE WITH MATCH INFORMATION AND SCORE. PRINTS WIN STATEMENT.
 function updateGame() {
+    const container = document.querySelector('#container');
     const result = document.querySelector('#result');
     const gameResult = document.querySelector('#gameResult');
     const player = document.querySelector('#player');
@@ -62,6 +63,7 @@ function updateGame() {
 
     if (playerScore === 5 || computerScore === 5) {
         gameResult.textContent = `${playerScore === 5 ? "Player" : "Computer"} wins game!`
+        playerScore === 5 ? container.classList.add('greenSplash') : container.classList.add('redSplash');
     }
 
     player.textContent = playerScore;
@@ -74,12 +76,14 @@ function resetGame() {
     const gameResult = document.querySelector('#gameResult');
     const player = document.querySelector('#player');
     const computer = document.querySelector('#computer');
+    const container = document.querySelector('#container');
 
     resetBorders();
     result.textContent = "New game ready";
     player.textContent = "0";
     computer.textContent = "0";
     gameResult.textContent = "";
+    container.setAttribute('class', '');
 }
 
 function resetBorders() {

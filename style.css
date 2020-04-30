@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: lightcyan;
 }
 h2 {
     font-size: 20px;
@@ -12,7 +13,7 @@ h2 {
 }
 #buttons {
     width: 400px;
-    margin: auto;
+    margin: 50px auto;
     display: flex;
     justify-content: space-between;
 }
@@ -36,6 +37,16 @@ h2 {
 .borderBottom {
     border-bottom: 4px solid red;
     transition: 0.3s;
+}
+
+.greenSplash {
+    background-color: lightgreen;
+    transition: 1s;
+}
+
+.redSplash {
+    background-color: rgba(255, 0, 0, 0.85);
+    transition: 1s;
 }
 
 #rock .img {
