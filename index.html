@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="container">
-        <h1>Rock, Paper, Scissors!</h1>
-        <h2>Choose wisely</h2>
-        <div id="buttons">
-            <div id="rock" class="choice"><img class="img"src="http://clipart-library.com/images_k/rock-clipart-transparent/rock-clipart-transparent-23.png" height="110px" alt="rock image and clickable choice for game"></div>
-            <div id="paper" class="choice"><img class="img"src="http://clipart-library.com/data_images/296148.png" alt="paper image and clickable choice for game"></div>
-            <div id="scissors" class="choice"><img class="img"src="http://clipart-library.com/images_k/scissors-clipart-transparent/scissors-clipart-transparent-3.png" alt="scissors image and clickable choice for game"></div>        
+      <h1>Rock, Paper, Scissors!</h1>
+      <h2>Choose wisely</h2>
+      <div id="buttons">
+        <div id="rock" class="choice">
+          <img
+            class="img"
+            src="images/rock.png"
+            height="110px"
+            alt="rock image and clickable choice for game"
+          />
         </div>
-        <p id="result">New game ready</p>
-        <p id="gameResult"></p>
-        <p id="scores">
-            Player: <span id="player">0</span> Computer: <span id="computer">0</span>
-        </p>
-        <button id="reset">Reset</button>  
-        
+        <div id="paper" class="choice">
+          <img
+            class="img"
+            src="images/paper.png"
+            alt="paper image and clickable choice for game"
+          />
+        </div>
+        <div id="scissors" class="choice">
+          <img
+            class="img"
+            src="images/scissors.png"
+            alt="scissors image and clickable choice for game"
+          />
+        </div>
+      </div>
+      <p id="result">New game ready</p>
+      <p id="gameResult"></p>
+      <p id="scores">
+        Player: <span id="player">0</span> Computer:
+        <span id="computer">0</span>
+      </p>
+      <button id="reset">Reset</button>
     </div>
-    
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
